@@ -1,9 +1,11 @@
 'use client';
 
+import { BsGithub, BsGoogle } from 'react-icons/bs';
 import Button from '@/app/components/buttons/Button';
 import Input from '@/app/components/inputs/Input';
 import { useCallback, useState } from 'react';
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form';
+import AuthSocialButton from './AuthSocialButton';
 
 type variant = 'LOGIN' | 'RESISTER';
 
@@ -85,6 +87,28 @@ const AuthForm = () => {
             {variant === 'LOGIN' ? 'Sign in' : 'Register'}
           </Button>
         </form>
+        <div className="mt-6">
+          <div className="relative">
+            <div className="absolute inset-0 items-center flex">
+              <div className="w-full border-t border-gray-300" />
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="bg-white text-gray-500 px-2 ">
+                Or continue with
+              </span>
+            </div>
+          </div>
+          <div className="mt-6 flex gap-2">
+            <AuthSocialButton
+              icon={BsGithub}
+              onClick={() => socialAction('github')}
+            />
+            <AuthSocialButton
+              icon={BsGoogle}
+              onClick={() => socialAction('google')}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
